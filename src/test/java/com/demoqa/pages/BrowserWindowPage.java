@@ -7,6 +7,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.devtools.v85.page.Page;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -45,8 +46,10 @@ public class BrowserWindowPage {
 
     @Step("15.Нажать на «Browser Windows»")
     public void navigateToBrowserWindows() {
-        JavascriptExecutor js = (JavascriptExecutor) driver;
-        js.executeScript("arguments[0].scrollIntoView();", browserWindowsButton);
+        //JavascriptExecutor js = (JavascriptExecutor) driver;
+        //js.executeScript("arguments[0].scrollIntoView();", browserWindowsButton);
+        new WebDriverWait(driver,Duration.ofSeconds(5))
+                .until(ExpectedConditions.elementToBeClickable(browserWindowsButton));
         browserWindowsButton.click();
     }
 
