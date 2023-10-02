@@ -1,6 +1,7 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.*;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
@@ -11,6 +12,7 @@ import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,7 +26,7 @@ public class DemoQATest {
     public void setUp() {
     ChromeOptions options = new ChromeOptions();
     options.setPageLoadStrategy(PageLoadStrategy.EAGER); //скрипт gpt.js не подргужается( на это уходит 41.14 сек),DOM дерево подгружается за .0268с
-    System.setProperty("webdriver.chrome.driver", "C:\\Program Files (x86)\\chromeDriver\\chromedriver.exe");
+    WebDriverManager.chromedriver().setup();
     driver = new ChromeDriver(options);
 }
 
